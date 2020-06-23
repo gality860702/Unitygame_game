@@ -8,6 +8,7 @@ TagManager:
   - human
   - police
   - "\u706B\u7403"
+  - people
   layers:
   - Default
   - TransparentFX

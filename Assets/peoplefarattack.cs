@@ -38,7 +38,7 @@ public class peoplefarattack : PEOPLE_TRSEK
             ani.SetTrigger("攻擊");
             GameObject temp = Instantiate(bullet, transform.position + transform.forward + transform.up, transform.rotation);
             Rigidbody rig = temp.AddComponent<Rigidbody>();
-            rig.AddForce(transform.forward * 500);
+            rig.AddForce(transform.forward * 1500);
         }
     }
 }

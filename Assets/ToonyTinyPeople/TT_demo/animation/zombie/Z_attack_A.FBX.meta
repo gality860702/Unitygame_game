@@ -137,7 +137,7 @@ ModelImporter:
     second: //RootNode
   - first:
       74: 7400000
-    second: "\u6BAD\u5C4D\u653B\u64CA"
+    second: "\u653B\u64CA"
   - first:
       95: 9500000
     second: //RootNode
@@ -170,7 +170,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: "\u6BAD\u5C4D\u653B\u64CA"
+      name: "\u653B\u64CA"
       takeName: Take 001
       internalID: 0
       firstFrame: 0

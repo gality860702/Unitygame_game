@@ -45,10 +45,13 @@ public class PEOPLE_TRSEK : people
         // 儲存所有人跟此物件的距離
         for (int i = 0; i < people.Length; i++)
         {
-            if (people[i]==null || people[i].transform.name == "殭屍" || people[i].transform.name == "警察") 
-            {
-                distance[i] = 999;                // 此物件的距離改為999
-                continue;                         // 繼續 - 跳過並執行下一次迴圈
+             
+            
+                if(people[i]==null ||people[i].transform.name=="殭屍" || people[i].transform.name=="警察")
+        {
+                if (people[i] == null) distance[i] = 1000;       //如果人類死亡 距離 改為1000
+                else distance[i] = 999;                          // 此物件的距離改為999
+                continue;                                        // 繼續 - 跳過並執行下一次迴圈
             }
             distance[i] = Vector3.Distance(transform.position,people[i].transform.position);
         }
@@ -59,17 +62,28 @@ public class PEOPLE_TRSEK : people
         //追蹤最近目標
         agent.SetDestination(target.position);
 
-        if (agent.remainingDistance <= 1f) HitPeople();
+        if (agent.remainingDistance <= 1f && min!=999) HitPeople();
     }
 
+    private float timerhit;
     /// <summary>
     /// 傷害人類
     /// </summary>
-   private void HitPeople()
+    private void HitPeople()
     {
-        target.GetComponent<people>().Dead();
+        if (timerhit >= 1f)
+        {
+            timerhit = 0;
+            agent.isStopped = true;
+            ani.SetTrigger("攻擊");
+            target.GetComponent<people>().Dead();
+        }
+    else
+        {
+            agent.isStopped = false;
+            timerhit += Time.deltaTime;
+        }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "火球")
